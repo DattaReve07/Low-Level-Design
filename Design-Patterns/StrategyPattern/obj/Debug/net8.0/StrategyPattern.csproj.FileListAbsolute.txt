@@ -1,0 +1,14 @@
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/bin/Debug/net8.0/StrategyPattern
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/bin/Debug/net8.0/StrategyPattern.deps.json
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/bin/Debug/net8.0/StrategyPattern.runtimeconfig.json
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/bin/Debug/net8.0/StrategyPattern.dll
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/bin/Debug/net8.0/StrategyPattern.pdb
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.AssemblyInfoInputs.cache
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.AssemblyInfo.cs
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.csproj.CoreCompileInputs.cache
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.dll
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/refint/StrategyPattern.dll
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.pdb
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/StrategyPattern.genruntimeconfig.cache
+/Users/dattatrayreve/Low-Level-Design/StrategyPattern/obj/Debug/net8.0/ref/StrategyPattern.dll
