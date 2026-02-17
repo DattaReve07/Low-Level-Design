@@ -1,0 +1,21 @@
+# Ignore JetBrains IDE (IntelliJ, Rider, etc.) project files
+.idea/
+*.iml
+
+# Ignore VSCode project files
+.vscode/
+
+# Ignore hidden files (dotfiles) commonly created by editors
+*.sublime*
+*.swp
+*.swo
+*.bak
+*~
+
+# macOS system files
+.DS_Store
+
+# General hidden files (optional, but be careful if you have important dotfiles)
+# .*
+# Ignore obj folders in all subdirectories (one-time global solution)
+**/obj/
