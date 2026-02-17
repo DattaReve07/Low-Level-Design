@@ -19,3 +19,5 @@
 # .*
 # Ignore obj folders in all subdirectories (one-time global solution)
 **/obj/
+# Ignore bin folders in all subdirectories
+**/bin/
