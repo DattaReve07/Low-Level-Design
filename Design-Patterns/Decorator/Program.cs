@@ -1,37 +1,101 @@
-﻿namespace Decorator;
-
-using static System.Console;
-
-/// <summary>
+﻿/// <summary>
 /// Decorator Design Pattern
 /// </summary>
-public class Program
-{
-    public static void Main()
+
+// Converted to idiomatic C#
+using System;
+
+    public interface ICoffee
     {
-        // Create book
-        var book = new Book("Worley", "Inside ASP.NET", 10);
-        book.Display();
-
-        // Create video
-        var video = new Video("Spielberg", "Jaws", 23, 92);
-        video.Display();
-
-        // Make video borrowable, then borrow and display
-        Console.WriteLine("\nMaking video borrowable:");
-
-        var catalog = new Catalog(video);
-        catalog.BorrowItem("Customer #1");
-        catalog.BorrowItem("Customer #2");
-
-        catalog.Display();
-
-        // Make book borrowable, then borrow and display
-        Console.WriteLine("\nMaking book borrowable:");
-
-        var catalog2 = new Catalog(book);
-        catalog2.BorrowItem("Customer #3");
-        catalog2.Display();
-
+        string GetDescription();
+        double GetCost();
     }
-}
+
+    public class PlainCoffee : ICoffee
+    {
+        public string GetDescription()
+        {
+            return "Plain Coffee";
+        }
+
+        public double GetCost()
+        {
+            return 2.0;
+        }
+    }
+
+    public abstract class CoffeeDecorator : ICoffee
+    {
+        protected readonly ICoffee decoratedCoffee;
+
+        protected CoffeeDecorator(ICoffee decoratedCoffee)
+        {
+            this.decoratedCoffee = decoratedCoffee ?? throw new ArgumentNullException(nameof(decoratedCoffee));
+        }
+
+        public virtual string GetDescription()
+        {
+            return decoratedCoffee.GetDescription();
+        }
+
+        public virtual double GetCost()
+        {
+            return decoratedCoffee.GetCost();
+        }
+    }
+
+    public class MilkDecorator : CoffeeDecorator
+    {
+        public MilkDecorator(ICoffee decoratedCoffee) : base(decoratedCoffee)
+        {
+        }
+
+        public override string GetDescription()
+        {
+            return decoratedCoffee.GetDescription() + ", Milk";
+        }
+
+        public override double GetCost()
+        {
+            return decoratedCoffee.GetCost() + 0.5;
+        }
+    }
+
+    public class SugarDecorator : CoffeeDecorator
+    {
+        public SugarDecorator(ICoffee decoratedCoffee) : base(decoratedCoffee)
+        {
+        }
+
+        public override string GetDescription()
+        {
+            return decoratedCoffee.GetDescription() + ", Sugar";
+        }
+
+        public override double GetCost()
+        {
+            return decoratedCoffee.GetCost() + 0.2;
+        }
+    }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            // Plain Coffee
+            ICoffee coffee = new PlainCoffee();
+            Console.WriteLine("Description: " + coffee.GetDescription());
+            Console.WriteLine("Cost: $" + coffee.GetCost());
+
+            // Coffee with Milk
+            ICoffee milkCoffee = new MilkDecorator(new PlainCoffee());
+            Console.WriteLine("\nDescription: " + milkCoffee.GetDescription());
+            Console.WriteLine("Cost: $" + milkCoffee.GetCost());
+
+            // Coffee with Sugar and Milk
+            ICoffee sugarMilkCoffee = new SugarDecorator(new MilkDecorator(new PlainCoffee()));
+            Console.WriteLine("Description: " + sugarMilkCoffee.GetDescription());
+            Console.WriteLine("Cost: $" + sugarMilkCoffee.GetCost());
+        }
+    }
+
