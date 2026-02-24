@@ -2,9 +2,10 @@ namespace TicTacToe;
 
 public class TicTacToeGame
 {
-    public Board gameBoard;
-    public LinkedList<Player> players;
-    private Player? winner;
+    private Board gameBoard;
+    private readonly LinkedList<Player> players;
+    public Player? winner;
+
     public TicTacToeGame()
     {
         players = new LinkedList<Player>();
@@ -23,21 +24,37 @@ public class TicTacToeGame
         {
             Player currentPlayer = players.First!.Value;
             gameBoard.Print();
-            Console.WriteLine($"{currentPlayer.Name}'s turn. Please enter the row and column to place your piece (e.g., 1, 2):");
+            Console.WriteLine(
+                $"{currentPlayer.Name}'s turn. Please enter the row and column to place your piece (e.g., 1, 2):");
             string input = Console.ReadLine()!;
             string[] coordinates = input.Split(',');
-            int row = int.Parse(coordinates[0].Trim());
-            int col = int.Parse(coordinates[1].Trim());
-            var validMove = gameBoard.fillPlace(row, col, currentPlayer.PlayingPiece);
+            int row = int.Parse(coordinates[0].Trim()) - 1;
+            int col = int.Parse(coordinates[1].Trim()) - 1;
+            var validMove = gameBoard.FillPlace(row, col, currentPlayer.PlayingPiece);
             if (!validMove)
             {
                 Console.WriteLine("Invalid move. Please try again.");
                 continue;
             }
-            if()
 
+            players.RemoveFirst();
+            players.AddLast(currentPlayer);
 
+            bool isWiner = gameBoard.CheckWin(row, col, currentPlayer.PlayingPiece.piece);
+            if (isWiner)
+            {
+                winner = currentPlayer;
+                gameBoard.Print();
+                return GameStatus.WIN;
+            }
 
+            if (gameBoard.IsFull())
+            {
+                gameBoard.Print();
+                gameOver = true;
+            }
         }
+
+        return GameStatus.DRAW;
     }
 }
